@@ -13,6 +13,9 @@ const constraintSection = document.getElementById("constraintSection");
 const constraintForm = document.getElementById("constraintForm");
 const accumulationSection = document.getElementById("accumulationSection");
 const accumulationForm = document.getElementById("accumulationForm");
+const levelGuideSection = document.getElementById("levelGuideSection");
+const levelSelectorForm = document.getElementById("levelSelectorForm");
+const copyLevelSummaryButton = document.getElementById("copyLevelSummaryButton");
 const storageKey = "state-sense-form";
 const questionStorageKey = "state-sense-answers";
 const rewardStorageKey = "reward-answers";
@@ -20,6 +23,7 @@ const relationshipStorageKey = "relationship-answers";
 const pressureStorageKey = "pressure-answers";
 const constraintStorageKey = "constraint-answers";
 const accumulationStorageKey = "accumulation-answers";
+const selectedLevelStorageKey = "selected-floor-level";
 const defaultDraft = {
   name: "홍길동",
   age: "34",
@@ -104,8 +108,12 @@ function buildClipboardSummary() {
   const { basicInfo, answers } = summary;
   const getLine = (title, keys) =>
     `${title}: ${keys.map((key) => answers[key] ?? "-").join(", ")}`;
+  const selectedLevel =
+    levelSelectorForm?.querySelector('input[name="selectedLevel"]:checked')?.value ??
+    localStorage.getItem(selectedLevelStorageKey) ??
+    "";
 
-  return [
+  const lines = [
     `이름 : ${basicInfo.name}`,
     `나이 : ${basicInfo.age}`,
     `직업 : ${basicInfo.job}`,
@@ -117,7 +125,56 @@ function buildClipboardSummary() {
     getLine("4. 책임압박", ["q16", "q17", "q18", "q19", "q20"]),
     getLine("5. 상태취약 정도", ["q21", "q22", "q23", "q24", "q25"]),
     getLine("6. 상태취약 누적", ["q26", "q27", "q28", "q29", "q30"]),
-  ].join("\n");
+  ];
+
+  if (selectedLevel) {
+    lines.push("", `선택한 층: ${selectedLevel}`);
+  }
+
+  return lines.join("\n");
+}
+
+function restoreSelectedLevel() {
+  if (!levelSelectorForm) {
+    return false;
+  }
+
+  const savedLevel = localStorage.getItem(selectedLevelStorageKey);
+  if (!savedLevel) {
+    return false;
+  }
+
+  const input = levelSelectorForm.querySelector(
+    `input[name="selectedLevel"][value="${savedLevel}"]`
+  );
+
+  if (!input) {
+    localStorage.removeItem(selectedLevelStorageKey);
+    return false;
+  }
+
+  input.checked = true;
+  return true;
+}
+
+function revealLevelGuideSection() {
+  if (!levelGuideSection) {
+    return;
+  }
+
+  levelGuideSection.classList.remove("is-hidden");
+  levelGuideSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function copySummaryToClipboard(successMessage) {
+  navigator.clipboard
+    .writeText(buildClipboardSummary())
+    .then(() => {
+      showToast(successMessage);
+    })
+    .catch(() => {
+      showToast("?묐떟? ??λ릺?덉?留??대┰蹂대뱶 蹂듭궗???ㅽ뙣?덉뒿?덈떎.");
+    });
 }
 
 function saveAnswers() {
@@ -402,6 +459,11 @@ if (hasSavedAccumulationAnswers && accumulationSection) {
   accumulationSection.classList.remove("is-hidden");
 }
 
+const hasSavedSelectedLevel = restoreSelectedLevel();
+if (hasSavedSelectedLevel && levelGuideSection) {
+  levelGuideSection.classList.remove("is-hidden");
+}
+
 saveButton?.addEventListener("click", saveDraft);
 
 questionForm?.addEventListener("change", () => {
@@ -426,6 +488,17 @@ constraintForm?.addEventListener("change", () => {
 
 accumulationForm?.addEventListener("change", () => {
   saveAccumulationAnswers();
+});
+
+levelSelectorForm?.addEventListener("change", () => {
+  const selectedLevel =
+    levelSelectorForm.querySelector('input[name="selectedLevel"]:checked')?.value ?? "";
+
+  if (!selectedLevel) {
+    return;
+  }
+
+  localStorage.setItem(selectedLevelStorageKey, selectedLevel);
 });
 
 form?.addEventListener("submit", (event) => {
@@ -535,4 +608,22 @@ accumulationForm?.addEventListener("submit", (event) => {
     .catch(() => {
       showToast("응답은 저장되었지만 클립보드 복사는 실패했습니다.");
     });
+});
+accumulationForm?.addEventListener("submit", () => {
+  window.setTimeout(() => {
+    revealLevelGuideSection();
+  }, 0);
+});
+
+copyLevelSummaryButton?.addEventListener("click", () => {
+  const selectedLevel =
+    levelSelectorForm?.querySelector('input[name="selectedLevel"]:checked')?.value ?? "";
+
+  if (!selectedLevel) {
+    showToast("먼저 확인하고 싶은 층을 선택해 주세요.");
+    return;
+  }
+
+  localStorage.setItem(selectedLevelStorageKey, selectedLevel);
+  copySummaryToClipboard("선택한 층 정보까지 클립보드에 다시 저장했습니다.");
 });

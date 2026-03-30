@@ -812,6 +812,117 @@
           </div>
         </form>
       </section>
+
+      <section class="question-card is-hidden" id="levelGuideSection">
+        <div class="step-badge">Result Guide</div>
+        <h2>어느 층을 먼저 볼지 선택해보세요</h2>
+        <p class="section-copy">
+          전체 응답은 이미 클립보드에 저장되었습니다. 아래에서 지금 가장 먼저 점검하고 싶은 층을
+          선택하면, 해당 층의 기준을 다시 한 번 정리해서 볼 수 있습니다.
+        </p>
+
+        <div class="level-guide-intro">
+          <p class="level-guide-copy">
+            층은 위계가 아니라 현재 점검의 출발점을 뜻합니다. 높은 층이 더 좋은 것이 아니라,
+            지금의 삶을 가장 안정적으로 받쳐줄 층이 어디인지 찾는 과정에 가깝습니다.
+          </p>
+        </div>
+
+        <form class="level-selector" id="levelSelectorForm">
+          <label class="level-card">
+            <input type="radio" name="selectedLevel" value="1층. 생리" />
+            <span class="level-card-body">
+              <span class="level-card-header">
+                <strong>1층. 생리</strong>
+                <span class="level-card-tag">기반 작동층</span>
+              </span>
+              <span class="level-card-list">생리, 상태감각, 호흡, 수면, 소화, 영양</span>
+              <span class="level-card-list">근육발달/신체지지력, 인지 폭/지구력/속도/복원력</span>
+              <span class="level-card-copy">
+                여기는 인간의 기반 작동층입니다. 말 그대로 몸이 얼마나 삶을 감당할 수 있는가를
+                봅니다.
+              </span>
+            </span>
+          </label>
+
+          <label class="level-card">
+            <input type="radio" name="selectedLevel" value="2층. 관계" />
+            <span class="level-card-body">
+              <span class="level-card-header">
+                <strong>2층. 관계</strong>
+                <span class="level-card-tag">연결 기능층</span>
+              </span>
+              <span class="level-card-list">친밀감 수용, 감정 표현, 유머/가벼움, 경계설정</span>
+              <span class="level-card-list">
+                존중감 민감성, 회복되는 관계와 소모되는 관계 구분, 관계 유지 리듬
+              </span>
+              <span class="level-card-copy">
+                여기는 몸 위에서 실제로 타인과 연결되는 기능을 봅니다.
+              </span>
+            </span>
+          </label>
+
+          <label class="level-card">
+            <input type="radio" name="selectedLevel" value="3층. 자존" />
+            <span class="level-card-body">
+              <span class="level-card-header">
+                <strong>3층. 자존</strong>
+                <span class="level-card-tag">자기 지지층</span>
+              </span>
+              <span class="level-card-list">자립감, 자기 가치감, 인정 없는 상황에서의 안정성</span>
+              <span class="level-card-list">
+                비교 민감성, 트라우마/수치심 흔적, 고요함을 견디는 힘, 외부 자극 없이도 자기를
+                유지하는 힘
+              </span>
+              <span class="level-card-copy">
+                여기는 관계를 넘어서 내가 나로 설 수 있는가를 보는 층위입니다.
+              </span>
+            </span>
+          </label>
+
+          <label class="level-card">
+            <input type="radio" name="selectedLevel" value="4층. 성취" />
+            <span class="level-card-body">
+              <span class="level-card-header">
+                <strong>4층. 성취</strong>
+                <span class="level-card-tag">실행 확장층</span>
+              </span>
+              <span class="level-card-list">목표 구조, 실행 구조, 지속 구조, 성취의 방식</span>
+              <span class="level-card-list">
+                성취가 상태 보상인지 실제 성장인지, 성취 저하 시 붕괴 패턴, 성취의 왜곡 형태
+              </span>
+              <span class="level-card-copy">
+                여기는 자존과 관계와 생리 위에서 세상 속에서 무엇을 만들어내는가를 봅니다.
+              </span>
+            </span>
+          </label>
+
+          <label class="level-card">
+            <input type="radio" name="selectedLevel" value="5층. 헌신" />
+            <span class="level-card-body">
+              <span class="level-card-header">
+                <strong>5층. 헌신</strong>
+                <span class="level-card-tag">상위 순환층</span>
+              </span>
+              <span class="level-card-list">기여 구조, 헌신 방식, 타인을 위한 행동의 질</span>
+              <span class="level-card-list">
+                지시 순응형인지 주도형인지, 자기 소모형인지 지속 기여형인지, 무엇을 우선하는지,
+                집단/사회/다음 세대에 대한 태도
+              </span>
+              <span class="level-card-copy">
+                여기는 상위 순환층입니다. 즉 내가 나를 넘어서 어떻게 흐를 수 있는가를 보는
+                층입니다.
+              </span>
+            </span>
+          </label>
+        </form>
+
+        <div class="question-actions">
+          <button type="button" class="secondary-button" id="copyLevelSummaryButton">
+            선택한 층까지 다시 클립보드에 저장하기
+          </button>
+        </div>
+      </section>
     </main>
 
     <div class="toast" id="toast" aria-live="polite"></div>
