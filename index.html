@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상태감각 유형검사</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero-card">
+        <p class="eyebrow">State Sense Test</p>
+        <h1>상태감각 유형검사</h1>
+        <p class="hero-lead">
+          현재의 상태감각과 반응 패턴을 바탕으로 나의 성향 흐름을 살펴보는 검사
+        </p>
+
+        <h2>상담 전, 기본 정보를 먼저 입력해주세요</h2>
+        <p class="body-copy">
+          상태감각 유형검사는 고정된 성격만 보는 검사가 아니라
+          <span class="soft-highlight">현재의 상태</span>를 어떻게 감지하고 해석하며
+          <span class="soft-highlight">조정</span>하는지를 함께 살펴보는 검사입니다.
+        </p>
+        <p class="body-copy">
+          <span class="soft-highlight">예민함</span>,
+          <span class="soft-highlight">집중 저하</span>,
+          <span class="soft-highlight">관계 갈등</span>,
+          <span class="soft-highlight">무기력</span> 같은 반응을 단순한 성격 문제로만 보지 않고,
+          <span class="soft-highlight">피로·긴장·압박·회복 상태</span>와 연결해 이해하도록 돕습니다.
+        </p>
+        <p class="body-copy">
+          이를 통해 <span class="soft-highlight">내 상태감각 수준</span>,
+          <span class="soft-highlight">반복되는 반응 패턴</span>, 그리고
+          <span class="soft-highlight">삶의 전체를 만드는 지점</span>을 더 입체적으로 파악할 수 있습니다.
+        </p>
+
+        <a class="hero-button" href="#start">기본 정보 입력 시작</a>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>상태와 성향을 함께 분석</h3>
+            <p>고정된 성격유형이 아니라 현재의 상태와 반응 흐름을 함께 봅니다.</p>
+          </article>
+          <article class="feature-card">
+            <h3>반응 패턴을 더 현실적으로 이해</h3>
+            <p>예민함, 몰아붙이기, 회피, 무감각이 어떤 상태에서 나타나는지 살펴봅니다.</p>
+          </article>
+          <article class="feature-card">
+            <h3>관계와 일의 병목지점 확인</h3>
+            <p>갈등, 집중 저하, 휴식 불편감의 배경이 되는 상태 해석 가능성을 확인합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="form-card" id="start">
+          <h2>기본 정보 입력</h2>
+          <p class="section-copy">
+            입력해주신 정보는 다음 문항 진행과 결과 정리에 사용됩니다.
+          </p>
+
+        <form class="info-form" id="infoForm">
+            <label class="field">
+              <span>이름</span>
+              <input type="text" name="name" placeholder="홍길동" value="홍길동" />
+            </label>
+
+            <div class="field-row">
+              <label class="field">
+                <span>나이</span>
+                <input type="number" name="age" placeholder="34" value="34" />
+              </label>
+              <label class="field">
+                <span>직업</span>
+                <input type="text" name="job" placeholder="기획자" value="기획자" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>이메일</span>
+              <input type="email" name="email" placeholder="test@example.com" value="test@example.com" />
+            </label>
+
+            <p class="helper-copy">
+              상담 진행 안내 또는 결과 전달이 필요할 경우 이 이메일이 사용될 수
+              있습니다.
+            </p>
+
+            <div class="button-row">
+              <button type="submit" class="primary-button">다음 단계로</button>
+            <button type="button" class="secondary-button" id="saveButton">
+              임시 저장
+            </button>
+          </div>
+        </form>
+
+          <div class="form-footer" id="status-box" aria-live="polite">
+            기본 정보를 입력한 뒤 다음 단계에서 상태감각능력 문항 5개를 체크하게 됩니다.
+          </div>
+      </section>
+
+      <section class="question-card is-hidden" id="questionSection">
+        <div class="step-badge">Step 1</div>
+        <h2>상태감각능력</h2>
+        <p class="section-copy">
+          아래 5개 문항을 읽고, 지금의 나와 가장 가까운 반응을 하나씩 선택해주세요.
+        </p>
+
+        <form class="question-form" id="questionForm">
+          <article class="question-block">
+            <div class="question-number">1번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                평소보다 사소한 말에도 예민해지고, 머릿속이 복잡하며, 사람 말이 거슬리는 날이 생겼습니다.
+              </span>
+              <br />
+              <span class="question-prompt">
+                이럴 때 당신과 가장 가까운 반응은 무엇입니까?
+              </span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card">
+                <input type="radio" name="q1" value="A" />
+                <span><strong>A.</strong> 주변 사람들의 태도나 말투에 문제가 있다고 먼저 느끼고, 그 원인을 바깥에서 찾는다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q1" value="B" />
+                <span><strong>B.</strong> 일단 그냥 참거나 넘기지만, 왜 이렇게 거슬리는지는 별로 점검하지 않는다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q1" value="C" />
+                <span><strong>C.</strong> 오늘 내가 예민한 건 알지만, 정확히 무엇 때문인지는 잘 모르고 지나가는 편이다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q1" value="D" />
+                <span><strong>D.</strong> 내 피로, 긴장, 수면, 회복 상태를 먼저 떠올려보고 그 영향일 가능성을 생각한다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q1" value="E" />
+                <span><strong>E.</strong> 내 상태를 먼저 점검한 뒤, 사람과의 접촉이나 중요한 판단을 잠시 줄이는 식으로 행동을 조정한다.</span>
+              </label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">2번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                어떤 일을 하다가 평소보다 집중이 안 되고, 사소한 실수도 늘고, 괜히 스스로가 한심하게 느껴지는 날이 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">
+                이럴 때 당신과 가장 가까운 반응은 무엇입니까?
+              </span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card">
+                <input type="radio" name="q2" value="A" />
+                <span><strong>A.</strong> 내가 원래 의지가 약하거나 능력이 부족한 사람인가 보다 하고 생각한다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q2" value="B" />
+                <span><strong>B.</strong> 짜증은 나지만 그냥 더 몰아붙이면 해결될 거라고 생각한다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q2" value="C" />
+                <span><strong>C.</strong> 상태가 안 좋은 것 같긴 한데, 그래도 우선 참고 해본다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q2" value="D" />
+                <span><strong>D.</strong> 오늘 상태 때문에 사고력이나 집중력이 줄었을 가능성을 생각해본다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q2" value="E" />
+                <span><strong>E.</strong> 지금은 성과보다 회복이나 정비가 먼저일 수 있다고 보고, 계획이나 강도를 조정한다.</span>
+              </label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">3번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                가까운 사람과 대화하다가, 평소 같으면 넘길 수 있는 말도 유난히 서운하거나 공격적으로 느껴지는 순간이 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">
+                이럴 때 당신과 가장 가까운 반응은 무엇입니까?
+              </span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card">
+                <input type="radio" name="q3" value="A" />
+                <span><strong>A.</strong> 상대가 나를 무시했거나 문제 있는 태도를 보인 것이라고 거의 확신한다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q3" value="B" />
+                <span><strong>B.</strong> 바로 티를 내지는 않지만 속으로 오래 곱씹고, 상대에 대한 평가가 내려간다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q3" value="C" />
+                <span><strong>C.</strong> 내가 예민한 걸 수도 있고 상대 문제일 수도 있다고 생각하지만 정리는 잘 안 된다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q3" value="D" />
+                <span><strong>D.</strong> 내 상태가 안 좋으면 말이 더 날카롭게 들릴 수 있다는 점을 먼저 같이 고려한다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q3" value="E" />
+                <span><strong>E.</strong> 지금 바로 결론내리지 않고, 내 상태가 회복된 뒤 다시 판단하거나 대화를 조정한다.</span>
+              </label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">4번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                오랜만에 시간이 생겼는데도 편히 쉬지 못하고, 괜히 뭔가를 해야 할 것 같아 불안해지는 날이 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">
+                이럴 때 당신과 가장 가까운 반응은 무엇입니까?
+              </span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card">
+                <input type="radio" name="q4" value="A" />
+                <span><strong>A.</strong> 쉬고 있는 내가 뒤처지는 것 같아서 바로 할 일을 찾는다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q4" value="B" />
+                <span><strong>B.</strong> 쉬어보려 하지만 불안해서 결국 휴식도 제대로 못 하고 어정쩡하게 시간을 보낸다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q4" value="C" />
+                <span><strong>C.</strong> 내가 쉬는 걸 불편해한다는 건 알지만, 왜 그런지는 깊게 생각하지 않는다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q4" value="D" />
+                <span><strong>D.</strong> 내가 지금 휴식 부족인지, 책임압박이 과한 상태인지 점검해보려 한다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q4" value="E" />
+                <span><strong>E.</strong> 쉬는 불편감 자체를 상태 신호로 보고, 일부러 자극과 일을 줄이며 몸과 판단을 같이 가라앉히려 한다.</span>
+              </label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">5번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                어느 시기부터 사람도 귀찮고, 일도 재미없고, 뭘 해도 예전만큼 생기가 안 느껴집니다.
+              </span>
+              <br />
+              <span class="question-prompt">
+                이럴 때 당신과 가장 가까운 반응은 무엇입니까?
+              </span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card">
+                <input type="radio" name="q5" value="A" />
+                <span><strong>A.</strong> 원래 내가 이런 사람인가 보다, 흥미가 식은 것뿐이라고 생각한다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q5" value="B" />
+                <span><strong>B.</strong> 환경이 문제라고 느끼며, 뭔가 더 강한 자극이나 새로운 걸 찾으려 한다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q5" value="C" />
+                <span><strong>C.</strong> 내가 지친 것 같긴 한데, 시간이 지나면 알아서 돌아오겠지 하고 넘긴다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q5" value="D" />
+                <span><strong>D.</strong> 지금의 무감각이나 냉소가 누적된 피로·긴장·압박의 결과일 수 있다고 본다.</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="q5" value="E" />
+                <span><strong>E.</strong> 내가 원래 원하는 것과 현재 붙잡고 있는 것을 다시 구분해보며, 누적된 상태문제일 가능성을 전제로 삶을 점검한다.</span>
+              </label>
+            </div>
+          </article>
+
+          <div class="question-actions">
+            <button type="submit" class="primary-button">다음 단계로</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="question-card is-hidden" id="rewardSection">
+        <div class="step-badge">Step 2</div>
+        <h2>보상/각성 수단</h2>
+        <p class="section-copy">
+          아래 5개 문항을 읽고, 지금의 나와 가장 가까운 반응을 하나씩 선택해주세요.
+        </p>
+
+        <form class="question-form" id="rewardForm">
+          <article class="question-block">
+            <div class="question-number">6번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                한동안 지치고 무기력했던 시기에, 오랜만에 누군가와 진심이 통하는 대화를 하거나 정서적으로 가까운 연결감을 느끼는 순간이 있었습니다.
+              </span>
+              <br />
+              <span class="question-prompt">그럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q6" value="A" /><span><strong>A.</strong> 그런 순간이 있어도 잠깐일 뿐, 관계 자체가 내 에너지를 크게 바꾸진 않는 편이다.</span></label>
+              <label class="choice-card"><input type="radio" name="q6" value="B" /><span><strong>B.</strong> 좋긴 하지만, 관계보다 결국 다른 성과나 결과가 있어야 더 살아나는 느낌이 든다.</span></label>
+              <label class="choice-card"><input type="radio" name="q6" value="C" /><span><strong>C.</strong> 정서적으로 연결되는 순간이 분명 좋고, 내 상태가 조금 풀리는 걸 느낀다.</span></label>
+              <label class="choice-card"><input type="radio" name="q6" value="D" /><span><strong>D.</strong> 누군가와 진짜 연결되었다고 느끼면 삶 전체에 힘이 돌아오는 편이다.</span></label>
+              <label class="choice-card"><input type="radio" name="q6" value="E" /><span><strong>E.</strong> 사람과의 진짜 교감이나 사랑받고 있다는 감각이 들어와야 내가 가장 살아있고 안정된 느낌을 받는다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">7번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                누군가가 당신을 진심으로 인정해주거나, 당신의 가치와 능력을 높게 보아준 순간이 있었습니다.
+              </span>
+              <br />
+              <span class="question-prompt">그럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q7" value="A" /><span><strong>A.</strong> 인정받는 건 나쁘지 않지만, 내 에너지나 삶의 중심이 크게 바뀌지는 않는다.</span></label>
+              <label class="choice-card"><input type="radio" name="q7" value="B" /><span><strong>B.</strong> 인정받으면 기분은 좋지만, 금방 지나가고 다른 조건이 더 중요하게 느껴진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q7" value="C" /><span><strong>C.</strong> 누군가 나를 존중하고 높게 봐주면 꽤 큰 힘이 나고 살아나는 느낌이 있다.</span></label>
+              <label class="choice-card"><input type="radio" name="q7" value="D" /><span><strong>D.</strong> 내가 가치 있는 사람으로 보인다고 느껴질 때 훨씬 더 자신감과 추진력이 올라간다.</span></label>
+              <label class="choice-card"><input type="radio" name="q7" value="E" /><span><strong>E.</strong> 존중받고 인정받는 감각이 있어야 내가 제대로 존재하고 있다는 느낌이 강해진다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">8번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                어떤 목표를 향해 분명히 나아가고 있고, 결과나 진전이 눈에 보이는 시기가 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">그럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q8" value="A" /><span><strong>A.</strong> 진전이 있어도 그것만으로 크게 살아나는 편은 아니고, 다른 요소가 더 중요하다.</span></label>
+              <label class="choice-card"><input type="radio" name="q8" value="B" /><span><strong>B.</strong> 결과가 나쁘지 않으면 좋긴 하지만, 사람이나 분위기 같은 다른 조건이 더 크게 작용한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q8" value="C" /><span><strong>C.</strong> 목표를 향해 진전하고 있으면 꽤 힘이 나고, 내 삶이 돌아가는 느낌이 든다.</span></label>
+              <label class="choice-card"><input type="radio" name="q8" value="D" /><span><strong>D.</strong> 분명한 목표와 성과가 있어야 가장 살아있고 자신감이 생긴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q8" value="E" /><span><strong>E.</strong> 내가 계속 발전하고 결과를 만들어내고 있다는 감각이 있어야 삶이 제대로 굴러간다고 느낀다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">9번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                누군가를 실제로 도와주거나, 지탱해주거나, 그 사람이 나아지는 데 내가 의미 있는 역할을 했다고 느끼는 순간이 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">그럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q9" value="A" /><span><strong>A.</strong> 그런 일은 의미는 있지만, 내 에너지가 특별히 크게 올라오지는 않는다.</span></label>
+              <label class="choice-card"><input type="radio" name="q9" value="B" /><span><strong>B.</strong> 도움을 주는 건 괜찮지만, 결국 내 삶이나 내 성취가 더 중요하게 느껴진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q9" value="C" /><span><strong>C.</strong> 누군가에게 실제 도움이 되었다고 느끼면 보람과 힘이 꽤 생긴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q9" value="D" /><span><strong>D.</strong> 사람을 살리거나 지탱했다는 감각이 들 때 가장 깊은 만족감과 존재 의미를 느낀다.</span></label>
+              <label class="choice-card"><input type="radio" name="q9" value="E" /><span><strong>E.</strong> 누군가에게 진짜 도움이 되고 있다는 감각이 내 삶에서 가장 큰 보상이고, 그럴 때 가장 살아있음을 느낀다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">10번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                한동안 별다른 위기나 강한 자극 없이, 평온하고 무탈한 흐름이 이어집니다.
+              </span>
+              <br />
+              <span class="question-prompt">그럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q10" value="A" /><span><strong>A.</strong> 평온하고 무탈한 흐름이 가장 좋고, 그런 안정감이 유지될 때 가장 편안하다.</span></label>
+              <label class="choice-card"><input type="radio" name="q10" value="B" /><span><strong>B.</strong> 안정적인 상태는 좋지만, 너무 오래 이어지면 약간 흐려지거나 심심해질 때도 있다.</span></label>
+              <label class="choice-card"><input type="radio" name="q10" value="C" /><span><strong>C.</strong> 평온이 좋긴 한데, 동시에 어느 정도 긴장감이나 목표가 있어야 더 살아나는 느낌이 든다.</span></label>
+              <label class="choice-card"><input type="radio" name="q10" value="D" /><span><strong>D.</strong> 평온만 계속되면 오히려 답답해지고, 새로운 자극이나 도전이 있어야 에너지가 오른다.</span></label>
+              <label class="choice-card"><input type="radio" name="q10" value="E" /><span><strong>E.</strong> 어느 정도 위기감, 경쟁, 강한 몰입, 새로운 자극이 있어야 내가 제대로 깨어나는 느낌이 든다.</span></label>
+            </div>
+          </article>
+
+          <div class="question-actions">
+            <button type="submit" class="primary-button">다음 단계로</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="question-card is-hidden" id="relationshipSection">
+        <div class="step-badge">Step 3</div>
+        <h2>관계능력</h2>
+        <p class="section-copy">
+          아래 5개 문항을 읽고, 지금의 나와 가장 가까운 반응을 하나씩 선택해주세요.
+        </p>
+
+        <form class="question-form" id="relationshipForm">
+          <article class="question-block">
+            <div class="question-number">11번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                가까운 사람과 대화하다가 서운하거나 불편한 지점이 생겼습니다. 그런데 아직 크게 싸운 건 아니고, 충분히 조정될 수도 있는 정도입니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q11" value="A" /><span><strong>A.</strong> 굳이 말해도 달라질 것 같지 않아 보이고, 속으로 정리하며 거리를 두기 시작한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q11" value="B" /><span><strong>B.</strong> 바로 말하지는 않지만 계속 마음에 남고, 상대를 보는 시선이 조금씩 달라진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q11" value="C" /><span><strong>C.</strong> 말해야 하나 고민은 하지만, 대체로 타이밍을 놓치고 지나가는 편이다.</span></label>
+              <label class="choice-card"><input type="radio" name="q11" value="D" /><span><strong>D.</strong> 완벽하게 정리되진 않아도 너무 늦기 전에 조심스럽게라도 말해보려 한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q11" value="E" /><span><strong>E.</strong> 감정이 커지기 전에 관계를 조정하는 게 중요하다고 보고, 상대가 받아들일 수 있는 방식으로 표현하고 조정하려 한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">12번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                당신이 불편하거나 상처받은 부분이 있는데, 상대는 그것을 전혀 모르는 것처럼 보입니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q12" value="A" /><span><strong>A.</strong> 어차피 말해도 이해 못 할 것 같아서, 표현하지 않고 마음을 접는다.</span></label>
+              <label class="choice-card"><input type="radio" name="q12" value="B" /><span><strong>B.</strong> 직접 말하기보다 태도나 거리감으로 티가 나게 되는 편이다.</span></label>
+              <label class="choice-card"><input type="radio" name="q12" value="C" /><span><strong>C.</strong> 말해보려는 마음은 있지만, 잘 표현할 자신이 없어 결국 미루는 편이다.</span></label>
+              <label class="choice-card"><input type="radio" name="q12" value="D" /><span><strong>D.</strong> 완벽하게 설명하지 못하더라도, 내가 어떤 부분에서 불편했는지는 전달해보려 한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q12" value="E" /><span><strong>E.</strong> 상대가 처음부터 정확히 이해하지 못하더라도, 조정 가능한 수준까지는 설명하고 맞춰가려 한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">13번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                어떤 사람과 점점 가까워지기 시작하면, 오히려 그 사람의 말투·반응·거리감에 더 민감해지는 자신을 느낄 때가 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q13" value="A" /><span><strong>A.</strong> 가까워질수록 더 예민해지고, 작은 반응에도 크게 흔들리거나 의미를 부여하게 된다.</span></label>
+              <label class="choice-card"><input type="radio" name="q13" value="B" /><span><strong>B.</strong> 좋아질수록 편해지기보다 오히려 신경 쓰이는 부분이 늘어나는 편이다.</span></label>
+              <label class="choice-card"><input type="radio" name="q13" value="C" /><span><strong>C.</strong> 어느 정도 그런 경향은 있지만, 그냥 내가 원래 예민한 편인가 보다 한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q13" value="D" /><span><strong>D.</strong> 친밀감이 생길수록 내 방어가 같이 올라오는지 보려고 한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q13" value="E" /><span><strong>E.</strong> 가까워질수록 예민해질 수 있다는 걸 감안해, 관계의 안정감과 내 상태를 같이 점검하며 반응을 조정한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">14번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                사람들과 시간을 보내고 집에 돌아온 뒤를 돌아보면, 어떤 때는 위로받고 살아난 느낌이 들고 어떤 때는 더 지치고 소모된 느낌이 듭니다.
+              </span>
+              <br />
+              <span class="question-prompt">전반적으로 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q14" value="A" /><span><strong>A.</strong> 사람들과 함께 있으면 대체로 에너지가 빠지고, 혼자 있는 쪽이 훨씬 안전하게 느껴진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q14" value="B" /><span><strong>B.</strong> 즐거운 자리여도 돌아오면 지치고, 사람은 좋은데 감당이 안 되는 느낌이 잦다.</span></label>
+              <label class="choice-card"><input type="radio" name="q14" value="C" /><span><strong>C.</strong> 경우에 따라 다르지만, 사람과 함께 있는 게 회복이 되는지 소모가 되는지 잘 모르겠다.</span></label>
+              <label class="choice-card"><input type="radio" name="q14" value="D" /><span><strong>D.</strong> 누구와 어떤 상태로 만났는지에 따라 다르며, 사람 자체보다 내 상태와 관계의 질이 중요하다고 본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q14" value="E" /><span><strong>E.</strong> 좋은 관계와 맞는 리듬에서는 실제로 회복되며, 소모되는 관계와 회복되는 관계를 구분해 조정하려 한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">15번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                상대가 당신을 완전히 이해하지 못하거나, 기대만큼 공감해주지 못한 이 생겼습니다. 그렇다고 큰 악의가 있는 것 같지는 않습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q15" value="A" /><span><strong>A.</strong> 나를 제대로 이해하지 못하면 결국 깊은 관계는 어렵다고 느끼며 마음을 접는다.</span></label>
+              <label class="choice-card"><input type="radio" name="q15" value="B" /><span><strong>B.</strong> 겉으로는 넘기지만, 속으로는 서운함이 남고 관계의 가치가 떨어진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q15" value="C" /><span><strong>C.</strong> 완전히 이해받는 건 어렵다고 생각하지만, 실망도 남아서 애매하게 거리를 둔다.</span></label>
+              <label class="choice-card"><input type="radio" name="q15" value="D" /><span><strong>D.</strong> 완벽한 이해는 아니어도 관계 전체를 부정할 일은 아닐 수 있다고 보고 조금 더 지켜본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q15" value="E" /><span><strong>E.</strong> 상대가 완벽히 이해하지 못해도 조정하고 맞춰갈 수 있다고 보며, 그 한 번의 부족함으로 관계 전체를 확정하지 않으려 한다.</span></label>
+            </div>
+          </article>
+
+          <div class="question-actions">
+            <button type="submit" class="primary-button">다음 단계로</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="question-card is-hidden" id="pressureSection">
+        <div class="step-badge">Step 4</div>
+        <h2>책임압박</h2>
+        <p class="section-copy">
+          아래 5개 문항을 읽고, 지금의 나와 가장 가까운 반응을 하나씩 선택해주세요.
+        </p>
+
+        <form class="question-form" id="pressureForm">
+          <article class="question-block">
+            <div class="question-number">16번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                한동안 계속 바쁘게 지내다가, 오랜만에 아무 일정이 없는 하루가 생겼습니다. 몸은 쉬어야 할 것 같은데, 마음은 쉽게 가라앉지 않습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q16" value="A" /><span><strong>A.</strong> 쉬고 있으면 뒤처지거나 무너질 것 같아서, 바로 할 일이나 정리할 것을 찾는다.</span></label>
+              <label class="choice-card"><input type="radio" name="q16" value="B" /><span><strong>B.</strong> 쉬어보려 하지만 마음이 불편해서 결국 제대로 쉬지 못하고 이것저것 건드리게 된다.</span></label>
+              <label class="choice-card"><input type="radio" name="q16" value="C" /><span><strong>C.</strong> 쉬는 게 어색하긴 하지만, 그냥 원래 이런 성격인가 보다 하고 넘긴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q16" value="D" /><span><strong>D.</strong> 내가 지금 휴식 자체보다 ‘멈추는 것’을 불안해하는 상태인지 점검해본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q16" value="E" /><span><strong>E.</strong> 쉬는 불편감이 압박 누적의 신호일 수 있다고 보고, 일부러 생산성을 내려놓고 몸과 마음이 가라앉는지 관찰한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">17번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                당신이 맡은 일이나 역할이 많은 시기에, 몸과 마음이 이미 지쳐 있다는 신호가 느껴집니다. 하지만 주변은 여전히 당신이 해주길 기대하는 분위기입니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q17" value="A" /><span><strong>A.</strong> 내가 힘들어도 내가 해야 한다고 느끼며, 상태를 접어두고 계속 밀어붙인다.</span></label>
+              <label class="choice-card"><input type="radio" name="q17" value="B" /><span><strong>B.</strong> 힘든 건 알지만, 내가 빠지면 더 큰 문제가 생길 것 같아 참고 버틴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q17" value="C" /><span><strong>C.</strong> 부담이 크긴 하지만, 일단 조금만 더 하고 나중에 쉬면 된다고 생각한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q17" value="D" /><span><strong>D.</strong> 내가 무리하고 있다는 걸 인지하고, 정말 내가 다 해야 하는 구조인지 점검한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q17" value="E" /><span><strong>E.</strong> 내 상태를 무시한 채 계속 가면 오히려 더 큰 손실이 생길 수 있다고 보고, 분산·조정·도움 요청을 시도한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">18번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                하고 싶은 일과 해야 하는 일이 동시에 생겼을 때, 둘 다 어느 정도 중요합니다. 그런데 최근 당신의 에너지는 충분하지 않습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q18" value="A" /><span><strong>A.</strong> 내가 원래 원하는 건 뒤로 미루고, 해야 하는 것부터 자동으로 붙든다.</span></label>
+              <label class="choice-card"><input type="radio" name="q18" value="B" /><span><strong>B.</strong> 하고 싶은 것도 신경 쓰이지만, 결국 죄책감 때문에 해야 하는 쪽으로 간다.</span></label>
+              <label class="choice-card"><input type="radio" name="q18" value="C" /><span><strong>C.</strong> 둘 사이에서 갈등하지만, 대개는 익숙한 쪽인 해야 하는 것을 선택한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q18" value="D" /><span><strong>D.</strong> 지금 내가 정말 중요해서 선택하는 건지, 압박 때문에 자동반응하는 건지 구분해보려 한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q18" value="E" /><span><strong>E.</strong> 장기적으로는 하고 싶은 것까지 살아있어야 균형이 유지된다고 보고, 해야 하는 것만 붙잡는 패턴을 조정하려 한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">19번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                중요하게 생각한 일에서 기대만큼 결과가 나오지 않았거나, 누군가가 당신에게 실망한 것 같은 순간이 있었습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q19" value="A" /><span><strong>A.</strong> 단순히 일이 잘 안 된 것이 아니라, 내가 부족한 사람처럼 느껴진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q19" value="B" /><span><strong>B.</strong> 겉으로는 괜찮은 척하지만 속으로는 오래 신경 쓰이고 자꾸 만회하고 싶어진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q19" value="C" /><span><strong>C.</strong> 실망스럽긴 하지만 시간이 지나면 괜찮아질 거라고 생각하며 넘긴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q19" value="D" /><span><strong>D.</strong> 내가 결과와 존재가치를 너무 붙여서 느끼고 있는 건 아닌지 돌아본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q19" value="E" /><span><strong>E.</strong> 결과에 대한 아쉬움과 내 존재가치를 분리하려고 하며, 지금의 압박이 내 자존감 구조를 왜곡하는지 점검한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">20번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                가까운 사람이나 중요한 집단이 당신에게 기대를 걸고 있습니다. 그런데 당신은 이미 지쳐 있고, 더 하면 무너질 것 같은 느낌도 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q20" value="A" /><span><strong>A.</strong> 내 상태보다 상대의 기대를 더 우선하며, 무리해서라도 맞추려 한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q20" value="B" /><span><strong>B.</strong> 힘든 건 알지만 실망시키는 것이 더 불편해서, 결국 내 쪽을 접는다.</span></label>
+              <label class="choice-card"><input type="radio" name="q20" value="C" /><span><strong>C.</strong> 최대한 맞춰보되, 속으로는 답답함이나 억울함이 쌓인다.</span></label>
+              <label class="choice-card"><input type="radio" name="q20" value="D" /><span><strong>D.</strong> 내가 지금 상대를 실망시키는 걸 과도하게 두려워하는 상태인지 먼저 생각해본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q20" value="E" /><span><strong>E.</strong> 기대를 맞추는 것과 내 상태를 지키는 것 사이의 균형을 보려 하며, 필요하면 선을 긋거나 설명한다.</span></label>
+            </div>
+          </article>
+
+          <div class="question-actions">
+            <button type="submit" class="primary-button">다음 단계로</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="question-card is-hidden" id="constraintSection">
+        <div class="step-badge">Step 5</div>
+        <h2>상태제약 정도</h2>
+        <p class="section-copy">
+          아래 5개 문항을 읽고, 지금의 나와 가장 가까운 반응을 하나씩 선택해주세요.
+        </p>
+
+        <form class="question-form" id="constraintForm">
+          <article class="question-block">
+            <div class="question-number">21번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                평소라면 그냥 지나갈 수 있는 작은 소음, 말투, 표정, 일정 변화 같은 것들이 유난히 거슬리고 예민하게 느껴지는 날이 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q21" value="A" /><span><strong>A.</strong> 별것 아닌 일에도 바로 짜증이나 예민함이 올라오고, 주변이 더 거슬리게 느껴진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q21" value="B" /><span><strong>B.</strong> 겉으로는 티를 덜 내지만, 속으로는 자극이 평소보다 훨씬 크게 느껴진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q21" value="C" /><span><strong>C.</strong> 예민한 건 느끼지만 그냥 그런 날도 있겠지 하고 넘긴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q21" value="D" /><span><strong>D.</strong> 내가 지금 평소보다 자극에 민감해진 상태일 수 있다고 보고, 반응을 조금 늦추려 한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q21" value="E" /><span><strong>E.</strong> 작은 자극도 크게 느껴지는 걸 현재 상태 신호로 보고, 사람·일정·판단 강도를 일부러 낮춘다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">22번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                해야 할 일이나 해결할 문제가 여러 개 있을 때, 상태가 좋지 않은 날에는 평소보다 머리가 좁아지고 눈앞의 문제 하나만 크게 느껴질 때가 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q22" value="A" /><span><strong>A.</strong> 다른 건 잘 안 보이고 당장 가장 불편한 문제 하나에만 매달리게 된다.</span></label>
+              <label class="choice-card"><input type="radio" name="q22" value="B" /><span><strong>B.</strong> 선택지가 있다는 건 알지만, 실제로는 뭐부터 어떻게 해야 할지 막막하고 시야가 좁아진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q22" value="C" /><span><strong>C.</strong> 답답하긴 하지만 그냥 집중력이 떨어졌나 보다 하고 버틴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q22" value="D" /><span><strong>D.</strong> 지금은 내 판단 폭이 좁아진 상태일 수 있다고 보고, 결정을 너무 빨리 확정하지 않으려 한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q22" value="E" /><span><strong>E.</strong> 지금의 좁아진 시야를 상태문제로 보고, 중요한 결정은 미루거나 구조를 단순화해 판단 부담을 줄인다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">23번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                회복이 덜 된 날, 누군가의 말투나 반응이 애매할 때 평소보다 더 차갑거나 부정적으로 느껴질 수 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q23" value="A" /><span><strong>A.</strong> 상대가 나를 무시했거나 불편해한 것 같다고 거의 확신하게 된다.</span></label>
+              <label class="choice-card"><input type="radio" name="q23" value="B" /><span><strong>B.</strong> 확신까지는 아니어도, 좋은 뜻으로 보기는 어렵고 부정적으로 해석하게 된다.</span></label>
+              <label class="choice-card"><input type="radio" name="q23" value="C" /><span><strong>C.</strong> 애매하긴 하지만 일단 넘어가고, 마음속에만 남겨두는 편이다.</span></label>
+              <label class="choice-card"><input type="radio" name="q23" value="D" /><span><strong>D.</strong> 내 상태가 안 좋으면 상대 반응도 더 부정적으로 읽힐 수 있다고 같이 생각해본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q23" value="E" /><span><strong>E.</strong> 지금 바로 상대 의도를 확정하지 않고, 내 상태가 회복된 뒤 다시 판단하거나 확인하려 한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">24번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                장기적으로 중요하다고 아는 목표가 있는데, 상태가 안 좋은 날에는 그 목표보다 당장 편해지는 것, 자극적인 것, 바로 위안이 되는 쪽으로 더 끌릴 때가 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q24" value="A" /><span><strong>A.</strong> 장기적으로 중요한 걸 알면서도, 당장 편해지거나 자극이 되는 쪽으로 쉽게 기운다.</span></label>
+              <label class="choice-card"><input type="radio" name="q24" value="B" /><span><strong>B.</strong> 해야 할 걸 붙잡고 싶지만, 상태가 안 좋으면 집중이 잘 안 돼서 결국 즉각적인 위안 쪽으로 흔들린다.</span></label>
+              <label class="choice-card"><input type="radio" name="q24" value="C" /><span><strong>C.</strong> 그런 날도 있지만 그냥 의지 문제라고 생각하고 넘긴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q24" value="D" /><span><strong>D.</strong> 내가 지금 장기 목표보다 즉각 보상 쪽으로 기우는 건 상태가 좁아졌기 때문일 수 있다고 본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q24" value="E" /><span><strong>E.</strong> 이럴 때는 목표를 더 세게 밀기보다 상태를 먼저 회복시키거나 목표 단위를 줄여 흐름을 끊기지 않게 조정한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">25번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                어느 날 문득, 평소의 나였다면 조금 더 유연하게 보거나 넘길 수 있었을 일을 지금은 더 좁고 단단하게 받아들이고 있다는 느낌이 듭니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q25" value="A" /><span><strong>A.</strong> 지금의 내가 맞는 반응이라고 느끼며, 원래 세상은 이렇게 빡빡한 거라고 생각한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q25" value="B" /><span><strong>B.</strong> 원래보다 예민하고 좁아진 건 느끼지만, 어쩔 수 없이 버텨야 한다고 생각한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q25" value="C" /><span><strong>C.</strong> 달라진 느낌은 있지만 크게 중요하게 생각하지 않고 지나간다.</span></label>
+              <label class="choice-card"><input type="radio" name="q25" value="D" /><span><strong>D.</strong> 지금의 내가 원래보다 덜 유연하고 좁아진 상태일 수 있다고 인식한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q25" value="E" /><span><strong>E.</strong> 현재의 좁아짐이 내 본래 성향이 아니라 일시적 상태제약일 수 있다고 보고, 사람·일·판단을 평소 기준으로 확정하지 않으려 한다.</span></label>
+            </div>
+          </article>
+
+          <div class="question-actions">
+            <button type="submit" class="primary-button">다음 단계로</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="question-card is-hidden" id="accumulationSection">
+        <div class="step-badge">Step 6</div>
+        <h2>상태제약 누적도</h2>
+        <p class="section-copy">
+          아래 마지막 5개 문항을 읽고, 지금의 나와 가장 가까운 반응을 하나씩 선택해주세요.
+        </p>
+
+        <form class="question-form" id="accumulationForm">
+          <article class="question-block">
+            <div class="question-number">26번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                오랜만에 별다른 압박도 없고, 외부 자극도 적고, 비교적 편안하게 쉴 수 있는 시간이 생겼습니다. 그런데 막상 그런 시간이 주어지자 마음이나 몸이 자연스럽게 풀리기보다 어색하거나 불편한 느낌이 듭니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q26" value="A" /><span><strong>A.</strong> 편안한 상태가 오히려 낯설고 답답해서, 금방 다른 자극이나 할 일을 찾게 된다.</span></label>
+              <label class="choice-card"><input type="radio" name="q26" value="B" /><span><strong>B.</strong> 쉬고는 있지만 몸과 마음이 잘 안 풀리고, 계속 어딘가 긴장된 느낌이 남아 있다.</span></label>
+              <label class="choice-card"><input type="radio" name="q26" value="C" /><span><strong>C.</strong> 편한 시간이 어색하긴 하지만 그냥 시간이 지나면 적응되겠지 하고 넘긴다.</span></label>
+              <label class="choice-card"><input type="radio" name="q26" value="D" /><span><strong>D.</strong> 내가 이미 오래 긴장 상태에 익숙해져 있어서 편안함 자체가 낯설 수 있다고 생각해본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q26" value="E" /><span><strong>E.</strong> 편안함이 낯설게 느껴지는 것 자체를 오래 누적된 상태 신호로 보고, 일부러 그 낯섦을 관찰하며 회복감을 되찾는 과정을 가져보려 한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">27번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                최근이 아니라 꽤 오랜 기간 동안, 하루를 마치고 돌아보면 “잘 살았다”는 느낌보다 “어쨌든 버텼다”는 느낌이 더 익숙했습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q27" value="A" /><span><strong>A.</strong> 삶은 원래 버티는 거라고 느끼며, 그 이상을 기대하는 편이 아니다.</span></label>
+              <label class="choice-card"><input type="radio" name="q27" value="B" /><span><strong>B.</strong> 즐겁고 싶은 마음은 있지만, 현실적으로는 유지하고 무너지지 않는 게 더 중요하게 느껴진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q27" value="C" /><span><strong>C.</strong> 요즘만 그런 것 같다고 생각하며 넘기지만, 사실 꽤 오래 비슷했던 것 같기도 하다.</span></label>
+              <label class="choice-card"><input type="radio" name="q27" value="D" /><span><strong>D.</strong> 내가 삶을 즐기기보다 유지와 생존 중심으로 오래 운영해왔을 가능성을 생각해본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q27" value="E" /><span><strong>E.</strong> 버티는 방식이 너무 익숙해져 삶의 감각 자체가 줄어든 것일 수 있다고 보고, 내가 무엇을 즐기고 싶었는지부터 다시 점검해보려 한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">28번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                선택의 여유가 생겨 “내가 진짜 원하는 게 뭘까”를 생각해야 하는 순간이 왔습니다. 그런데 막상 생각해보면 좋아하는 것보다 “이건 놓으면 안 된다”, “이건 해야 한다”가 먼저 떠오릅니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q28" value="A" /><span><strong>A.</strong> 내가 뭘 좋아하는지는 잘 모르겠고, 놓으면 안 되는 것부터 챙기는 게 당연하게 느껴진다.</span></label>
+              <label class="choice-card"><input type="radio" name="q28" value="B" /><span><strong>B.</strong> 좋아하는 것도 있긴 하지만, 현실적으로는 해야 하는 것과 책임이 먼저 떠오른다.</span></label>
+              <label class="choice-card"><input type="radio" name="q28" value="C" /><span><strong>C.</strong> 원하는 것도 생각해보려 하지만 결국 익숙한 쪽은 놓으면 안 되는 것들이다.</span></label>
+              <label class="choice-card"><input type="radio" name="q28" value="D" /><span><strong>D.</strong> 내가 오래 생존 중심으로 살아오며 욕구보다 유지 항목에 더 익숙해졌을 가능성을 생각해본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q28" value="E" /><span><strong>E.</strong> 지금 떠오르는 ‘놓으면 안 되는 것’과 ‘원래 원했던 것’을 일부러 분리해서 보며, 내 욕구가 얼마나 가려졌는지 점검한다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">29번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                사람이나 일에 대해 예전보다 시큰둥하고, 거리 두고 싶고, 쉽게 기대하지 않게 된 자신을 발견할 때가 있습니다.
+              </span>
+              <br />
+              <span class="question-prompt">이럴 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q29" value="A" /><span><strong>A.</strong> 원래 내가 사람이나 일에 큰 기대를 안 하는 성격이라고 느낀다.</span></label>
+              <label class="choice-card"><input type="radio" name="q29" value="B" /><span><strong>B.</strong> 기대하면 실망이 커지니, 차라리 거리를 두는 게 편하다고 느낀다.</span></label>
+              <label class="choice-card"><input type="radio" name="q29" value="C" /><span><strong>C.</strong> 요즘 좀 지쳐서 그런가 보다 생각하지만, 이런 태도가 꽤 오래 반복된 것 같기도 하다.</span></label>
+              <label class="choice-card"><input type="radio" name="q29" value="D" /><span><strong>D.</strong> 지금의 냉소나 거리감이 일시적 반응이라기보다 오랜 누적의 결과일 수 있다고 본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q29" value="E" /><span><strong>E.</strong> 내가 원래 차갑거나 무관심한 사람이었다기보다, 기대와 실망, 소진이 누적되며 방어적으로 굳었을 가능성을 전제로 내 태도를 다시 본다.</span></label>
+            </div>
+          </article>
+
+          <article class="question-block">
+            <div class="question-number">30번 문항</div>
+            <p class="question-text">
+              <span class="question-body">
+                문득 예전의 자신을 떠올려보면, 지금보다 더 자연스럽게 기뻐하고, 사람을 믿고, 무언가에 몰입하던 시기가 있었던 것 같습니다.
+              </span>
+              <br />
+              <span class="question-prompt">그런 차이를 느낄 때 당신과 가장 가까운 반응은 무엇입니까?</span>
+            </p>
+            <div class="choice-group">
+              <label class="choice-card"><input type="radio" name="q30" value="A" /><span><strong>A.</strong> 사람은 원래 변하는 거니까, 지금의 내가 진짜 내 모습이라고 생각한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q30" value="B" /><span><strong>B.</strong> 예전과 달라진 건 느끼지만, 환경이 달라졌으니 어쩔 수 없는 변화라고 본다.</span></label>
+              <label class="choice-card"><input type="radio" name="q30" value="C" /><span><strong>C.</strong> 예전의 나와 지금의 나 사이에 차이가 있긴 한데, 깊이 들여다보지는 않는다.</span></label>
+              <label class="choice-card"><input type="radio" name="q30" value="D" /><span><strong>D.</strong> 지금의 내가 본래 성향 자체가 바뀐 것이라기보다, 오래 누적된 상태제약에 덮여 있을 수 있다고 생각한다.</span></label>
+              <label class="choice-card"><input type="radio" name="q30" value="E" /><span><strong>E.</strong> 예전의 나에게 있던 기쁨, 신뢰, 몰입이 단순히 사라진 게 아니라 가려진 것일 수 있다고 보고, 회복되면 어떤 성향이 다시 살아날지 구체적으로 점검해본다.</span></label>
+            </div>
+          </article>
+
+          <div class="question-actions">
+            <button type="submit" class="primary-button">클립보드에 저장하기</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
