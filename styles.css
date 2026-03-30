@@ -429,105 +429,159 @@ button:active {
   width: 100%;
 }
 
-.level-guide-intro {
-  margin-bottom: 18px;
-  padding: 18px 18px 16px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, rgba(90, 57, 240, 0.08), rgba(79, 160, 255, 0.08));
-  border: 1px solid rgba(90, 57, 240, 0.12);
+.level-guide-section {
+  padding-top: 30px;
 }
 
-.level-guide-copy {
-  margin-bottom: 0;
-  color: var(--text-soft);
-  line-height: 1.7;
+.level-guide-description {
+  margin-bottom: 22px;
 }
 
 .level-selector {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .level-card {
-  position: relative;
   display: block;
-  padding: 18px;
-  border-radius: 24px;
-  border: 1px solid rgba(104, 88, 153, 0.12);
-  background: linear-gradient(180deg, rgba(248, 247, 255, 0.96), rgba(255, 255, 255, 1));
   cursor: pointer;
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-}
-
-.level-card:hover {
-  transform: translateY(-1px);
-  border-color: rgba(90, 57, 240, 0.26);
 }
 
 .level-card input {
   position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 20px;
-  height: 20px;
-  margin: 0;
-  accent-color: var(--primary);
-  box-shadow: none;
-  transform: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.level-card-body {
+.level-card-shell {
   display: grid;
-  gap: 10px;
-  padding-right: 34px;
+  gap: 14px;
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(104, 88, 153, 0.12);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(248, 247, 255, 0.96), rgba(255, 255, 255, 1));
+  box-shadow: 0 10px 24px rgba(90, 57, 240, 0.08);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
-.level-card-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
+.level-card:hover .level-card-shell {
+  transform: translateY(-1px);
+  border-color: rgba(90, 57, 240, 0.26);
+  box-shadow: 0 14px 28px rgba(90, 57, 240, 0.12);
 }
 
-.level-card-header strong {
-  font-size: 1.1rem;
-  letter-spacing: -0.03em;
+.level-card-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: start;
 }
 
-.level-card-tag {
+.level-badge {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
-  padding: 0 10px;
-  border-radius: 999px;
-  background: rgba(90, 57, 240, 0.1);
-  color: var(--primary);
-  font-size: 0.82rem;
-  font-weight: 700;
+  justify-content: center;
+  min-width: 50px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 14px;
+  background: #19172a;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-.level-card-list,
-.level-card-copy {
-  line-height: 1.68;
+.level-card-heading {
+  display: grid;
+  gap: 5px;
+  padding-top: 2px;
 }
 
-.level-card-list {
+.level-card-heading strong {
+  font-size: 1.5rem;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
   color: var(--text-main);
-  font-weight: 600;
+}
+
+.level-card-subtitle {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.level-radio {
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border: 1.5px solid rgba(90, 57, 240, 0.22);
+  border-radius: 999px;
+  background: #fff;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.level-card-detail {
+  display: grid;
+  gap: 12px;
+  padding-left: 64px;
 }
 
 .level-card-copy {
   color: var(--text-soft);
+  line-height: 1.7;
 }
 
-.level-card:has(input:checked) {
-  border-color: rgba(90, 57, 240, 0.5);
-  box-shadow: 0 16px 28px rgba(90, 57, 240, 0.12);
+.level-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.level-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 31px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(90, 57, 240, 0.08);
+  color: #4f3bd1;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.level-card:has(input:checked) .level-card-shell {
+  border-color: rgba(90, 57, 240, 0.45);
+  box-shadow: 0 16px 30px rgba(90, 57, 240, 0.16);
   background: linear-gradient(180deg, rgba(244, 239, 255, 1), rgba(255, 255, 255, 1));
+}
+
+.level-card:has(input:checked) .level-radio {
+  border-color: var(--primary);
+  background:
+    radial-gradient(circle at center, var(--primary) 0 5px, transparent 6px),
+    #fff;
 }
 
 #copyLevelSummaryButton {
   width: 100%;
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .level-card-top {
+    grid-template-columns: auto 1fr;
+  }
+
+  .level-radio {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .level-card-detail {
+    padding-left: 0;
+  }
 }
 
 .toast {

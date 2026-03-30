@@ -162,6 +162,14 @@ function revealLevelGuideSection() {
     return;
   }
 
+  const selectedInput = levelSelectorForm?.querySelector('input[name="selectedLevel"]:checked');
+  const fallbackInput = levelSelectorForm?.querySelector('input[name="selectedLevel"]');
+
+  if (!selectedInput && fallbackInput) {
+    fallbackInput.checked = true;
+    localStorage.setItem(selectedLevelStorageKey, fallbackInput.value);
+  }
+
   levelGuideSection.classList.remove("is-hidden");
   levelGuideSection.scrollIntoView({ behavior: "smooth", block: "start" });
 }
