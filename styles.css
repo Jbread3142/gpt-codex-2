@@ -435,6 +435,7 @@ button:active {
 
 .level-guide-description {
   margin-bottom: 22px;
+  color: var(--text-main);
 }
 
 .level-selector {
@@ -506,7 +507,7 @@ button:active {
 }
 
 .level-card-subtitle {
-  color: var(--text-soft);
+  color: var(--text-main);
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -528,7 +529,7 @@ button:active {
 }
 
 .level-card-copy {
-  color: var(--text-soft);
+  color: var(--text-main);
   line-height: 1.7;
 }
 
