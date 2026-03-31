@@ -429,7 +429,25 @@ button:active {
   width: 100%;
 }
 
+.reset-island-section {
+  margin-top: 52px;
+  padding: 18px 18px 20px;
+}
+
+.reset-island-shell {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.reset-island-shell .secondary-button {
+  width: 100%;
+}
+
 .level-guide-section {
+  margin-top: 52px;
   padding-top: 30px;
 }
 

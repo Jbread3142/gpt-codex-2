@@ -13,9 +13,11 @@ const constraintSection = document.getElementById("constraintSection");
 const constraintForm = document.getElementById("constraintForm");
 const accumulationSection = document.getElementById("accumulationSection");
 const accumulationForm = document.getElementById("accumulationForm");
+const resetIslandSection = document.getElementById("resetIslandSection");
 const levelGuideSection = document.getElementById("levelGuideSection");
 const levelSelectorForm = document.getElementById("levelSelectorForm");
 const copyLevelSummaryButton = document.getElementById("copyLevelSummaryButton");
+const resetSelectionsButton = document.getElementById("resetSelectionsButton");
 const storageKey = "state-sense-form";
 const questionStorageKey = "state-sense-answers";
 const rewardStorageKey = "reward-answers";
@@ -70,6 +72,51 @@ function saveDraft() {
   const data = getFormData();
   localStorage.setItem(storageKey, JSON.stringify(data));
   showToast("입력한 내용이 임시 저장되었습니다.");
+}
+
+function resetAllSelections() {
+  const storageKeys = [
+    storageKey,
+    questionStorageKey,
+    rewardStorageKey,
+    relationshipStorageKey,
+    pressureStorageKey,
+    constraintStorageKey,
+    accumulationStorageKey,
+    selectedLevelStorageKey,
+  ];
+
+  storageKeys.forEach((key) => localStorage.removeItem(key));
+
+  fillForm(defaultDraft);
+
+  [
+    questionForm,
+    rewardForm,
+    relationshipForm,
+    pressureForm,
+    constraintForm,
+    accumulationForm,
+    levelSelectorForm,
+  ].forEach((formElement) => {
+    formElement?.reset();
+  });
+
+  [
+    questionSection,
+    rewardSection,
+    relationshipSection,
+    pressureSection,
+    constraintSection,
+    accumulationSection,
+    resetIslandSection,
+    levelGuideSection,
+  ].forEach((section) => {
+    section?.classList.add("is-hidden");
+  });
+
+  form?.scrollIntoView({ behavior: "smooth", block: "start" });
+  showToast("선택 항목과 기본정보를 처음 상태로 초기화했습니다.");
 }
 
 function getStoredObject(key) {
@@ -466,6 +513,9 @@ const hasSavedAccumulationAnswers = restoreAccumulationAnswers();
 if (hasSavedAccumulationAnswers && accumulationSection) {
   accumulationSection.classList.remove("is-hidden");
 }
+if (hasSavedAccumulationAnswers && resetIslandSection) {
+  resetIslandSection.classList.remove("is-hidden");
+}
 
 const hasSavedSelectedLevel = restoreSelectedLevel();
 if (hasSavedSelectedLevel && levelGuideSection) {
@@ -596,6 +646,8 @@ constraintForm?.addEventListener("submit", (event) => {
 
   saveConstraintAnswers();
   accumulationSection?.classList.remove("is-hidden");
+  resetIslandSection?.classList.remove("is-hidden");
+  resetIslandSection?.classList.remove("is-hidden");
   accumulationSection?.scrollIntoView({ behavior: "smooth", block: "start" });
   showToast("상태취약 정도 문항이 저장되었습니다. 아래에서 마지막 문항을 선택해주세요.");
 });
@@ -634,4 +686,7 @@ copyLevelSummaryButton?.addEventListener("click", () => {
 
   localStorage.setItem(selectedLevelStorageKey, selectedLevel);
   copySummaryToClipboard("선택한 층 정보까지 클립보드에 다시 저장했습니다.");
+});
+resetSelectionsButton?.addEventListener("click", () => {
+  resetAllSelections();
 });
