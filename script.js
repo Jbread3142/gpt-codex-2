@@ -18,6 +18,8 @@ const levelGuideSection = document.getElementById("levelGuideSection");
 const levelSelectorForm = document.getElementById("levelSelectorForm");
 const copyLevelSummaryButton = document.getElementById("copyLevelSummaryButton");
 const resetSelectionsButton = document.getElementById("resetSelectionsButton");
+const decreaseFontButton = document.getElementById("decreaseFontButton");
+const increaseFontButton = document.getElementById("increaseFontButton");
 const storageKey = "state-sense-form";
 const questionStorageKey = "state-sense-answers";
 const rewardStorageKey = "reward-answers";
@@ -26,6 +28,8 @@ const pressureStorageKey = "pressure-answers";
 const constraintStorageKey = "constraint-answers";
 const accumulationStorageKey = "accumulation-answers";
 const selectedLevelStorageKey = "selected-floor-level";
+const typeScaleStorageKey = "global-type-scale";
+const typeScaleValues = [0.94, 1, 1.08];
 const defaultDraft = {
   name: "홍길동",
   age: "34",
@@ -46,6 +50,31 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => {
     toast.classList.remove("is-visible");
   }, 2400);
+}
+
+function applyTypeScale(scale) {
+  document.documentElement.style.setProperty("--type-scale", String(scale));
+}
+
+function getSavedTypeScale() {
+  const raw = localStorage.getItem(typeScaleStorageKey);
+  const parsed = Number(raw);
+
+  if (!typeScaleValues.includes(parsed)) {
+    return 1;
+  }
+
+  return parsed;
+}
+
+function updateTypeScale(nextStep) {
+  const currentScale = getSavedTypeScale();
+  const currentIndex = typeScaleValues.indexOf(currentScale);
+  const nextIndex = Math.max(0, Math.min(typeScaleValues.length - 1, currentIndex + nextStep));
+  const nextScale = typeScaleValues[nextIndex];
+
+  localStorage.setItem(typeScaleStorageKey, String(nextScale));
+  applyTypeScale(nextScale);
 }
 
 function getFormData() {
@@ -89,6 +118,7 @@ function resetAllSelections() {
   storageKeys.forEach((key) => localStorage.removeItem(key));
 
   fillForm(defaultDraft);
+  applyTypeScale(1);
 
   [
     questionForm,
@@ -473,6 +503,8 @@ function validateQuestionForm(formElement) {
 }
 
 const savedDraft = localStorage.getItem(storageKey);
+applyTypeScale(getSavedTypeScale());
+
 if (savedDraft) {
   try {
     fillForm(JSON.parse(savedDraft));
@@ -689,4 +721,12 @@ copyLevelSummaryButton?.addEventListener("click", () => {
 });
 resetSelectionsButton?.addEventListener("click", () => {
   resetAllSelections();
+});
+
+decreaseFontButton?.addEventListener("click", () => {
+  updateTypeScale(-1);
+});
+
+increaseFontButton?.addEventListener("click", () => {
+  updateTypeScale(1);
 });
