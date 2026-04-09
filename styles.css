@@ -243,6 +243,9 @@ h1 {
 
 .toolbar-copy-wrap {
   min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .toolbar-title {
@@ -264,6 +267,11 @@ h1 {
   flex-wrap: wrap;
 }
 
+.toolbar-actions {
+  margin-left: auto;
+  flex-wrap: nowrap;
+}
+
 .survey-form {
   margin-top: 0;
 }
@@ -281,12 +289,36 @@ h1 {
   padding: 20px 18px 18px;
 }
 
+.section-card-intro {
+  padding-top: 26px;
+}
+
 .section-head {
   margin-bottom: 16px;
 }
 
+.section-head-intro {
+  margin-bottom: 22px;
+}
+
 .section-badge {
   margin-bottom: 10px;
+}
+
+.section-intro-title-wrap {
+  margin-bottom: 18px;
+}
+
+.section-badge-main {
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  color: var(--primary);
+  font-size: clamp(2.1rem, 6vw, 3rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.06em;
 }
 
 .section-title {
@@ -439,6 +471,8 @@ h1 {
   background: #fff;
   border: 1px solid rgba(123, 97, 255, 0.12);
   box-shadow: 0 10px 20px rgba(35, 27, 59, 0.06);
+  min-width: 126px;
+  padding: 0 22px;
 }
 
 .ghost-button {
@@ -510,6 +544,12 @@ h1 {
     flex: 1 1 140px;
   }
 
+  .toolbar-actions {
+    width: 100%;
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+
   .likert-label {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -545,6 +585,14 @@ h1 {
     margin-top: 24px;
   }
 
+  .toolbar-card {
+    padding: 14px;
+  }
+
+  .secondary-button {
+    min-width: 0;
+  }
+
   .hero-card,
   .info-card,
   .toolbar-card,
@@ -559,5 +607,13 @@ h1 {
 
   .feature-card h2 {
     font-size: 1.4rem;
+  }
+
+  .section-card-intro {
+    padding-top: 22px;
+  }
+
+  .section-intro-title-wrap {
+    margin-bottom: 16px;
   }
 }

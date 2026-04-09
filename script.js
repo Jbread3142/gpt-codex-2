@@ -239,6 +239,12 @@ const answersStorageKey = "state-sense-survey-answers";
 const typeScaleStorageKey = "state-sense-survey-scale";
 const typeScaleValues = [0.94, 1, 1.08];
 const totalQuestions = surveyData.reduce((sum, section) => sum + section.questions.length, 0);
+const defaultInfo = {
+  name: "홍길동",
+  age: "34",
+  job: "기획자",
+  email: "sample@naver.com",
+};
 let toastTimer;
 
 function escapeHtml(value) {
@@ -289,7 +295,10 @@ function saveInfo() {
 }
 
 function restoreInfo() {
-  const info = getSavedObject(infoStorageKey);
+  const info = {
+    ...defaultInfo,
+    ...getSavedObject(infoStorageKey),
+  };
   if (!infoForm) {
     return;
   }
@@ -377,9 +386,17 @@ function renderSurvey() {
         .join("");
 
       return `
-        <section class="section-card" id="${section.id}">
-          <div class="section-head">
-            <div class="section-badge">${sectionIndex + 1}. ${escapeHtml(section.title)}</div>
+        <section class="section-card ${sectionIndex === 0 ? "section-card-intro" : ""}" id="${section.id}">
+          <div class="section-head ${sectionIndex === 0 ? "section-head-intro" : ""}">
+            ${
+              sectionIndex === 0
+                ? `
+                  <div class="section-intro-title-wrap">
+                    <div class="section-badge section-badge-main">무감각화 검사</div>
+                  </div>
+                `
+                : ""
+            }
             <h2 class="section-title">${escapeHtml(section.title)}</h2>
             <p class="section-copy">${escapeHtml(section.description)}</p>
           </div>
