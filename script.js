@@ -355,14 +355,14 @@ function buildQuestionMarkup(question, index) {
         <div class="likert-row">
           <div class="likert-label">
             <strong>그렇다</strong>
-            <span class="likert-caption">나와 가깝다</span>
+            <span class="likert-caption">참고 계속하는 편</span>
           </div>
           <div class="likert-options" role="radiogroup" aria-label="문항 ${index}의 5점 척도 선택">
             ${dots}
           </div>
           <div class="likert-label right">
             <strong>그렇지 않다</strong>
-            <span class="likert-caption">나와 거리가 있다</span>
+            <span class="likert-caption">불편 신호를 더 살핀다</span>
           </div>
         </div>
       </div>
