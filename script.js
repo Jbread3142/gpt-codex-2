@@ -317,6 +317,10 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function formatAltText(value) {
+  return String(value).replace(/^대체문항:\s*/, "");
+}
+
 function showToast(message) {
   if (!toast) {
     return;
@@ -407,7 +411,17 @@ function buildQuestionMarkup(question, index) {
     <article class="question-card" data-question-id="${question.id}">
       <div class="question-number">문항 ${index}</div>
       <p class="question-title">${escapeHtml(question.title)}</p>
-      <p class="question-alt">${escapeHtml(question.alt)}</p>
+      <div class="question-alt-wrap">
+        <button
+          type="button"
+          class="question-alt-toggle"
+          aria-expanded="false"
+          aria-controls="${question.id}-alt"
+        >
+          쉬운 문항
+        </button>
+        <p class="question-alt" id="${question.id}-alt" hidden>${escapeHtml(formatAltText(question.alt))}</p>
+      </div>
       <div class="likert-shell">
         <div class="likert-row">
           <div class="likert-label">
@@ -462,6 +476,23 @@ function renderSurvey() {
       `;
     })
     .join("");
+}
+
+function toggleAltQuestion(button) {
+  const altId = button.getAttribute("aria-controls");
+  if (!altId) {
+    return;
+  }
+
+  const alt = document.getElementById(altId);
+  if (!alt) {
+    return;
+  }
+
+  const isExpanded = button.getAttribute("aria-expanded") === "true";
+  button.setAttribute("aria-expanded", String(!isExpanded));
+  alt.hidden = isExpanded;
+  button.textContent = isExpanded ? "쉬운 문항" : "쉬운 문항 닫기";
 }
 
 function restoreAnswers() {
@@ -629,6 +660,15 @@ startBtn?.addEventListener("click", (event) => {
 
 surveyForm?.addEventListener("change", () => {
   saveAnswers();
+});
+
+surveyForm?.addEventListener("click", (event) => {
+  const button = event.target.closest(".question-alt-toggle");
+  if (!(button instanceof HTMLButtonElement)) {
+    return;
+  }
+
+  toggleAltQuestion(button);
 });
 
 surveyForm?.addEventListener("submit", (event) => {

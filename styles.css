@@ -357,10 +357,36 @@ h1 {
   font-weight: 700;
 }
 
-.question-alt {
+.question-alt-wrap {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
   margin-bottom: 14px;
-  font-size: 0.93rem;
-  line-height: 1.65;
+}
+
+.question-alt-toggle {
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(123, 97, 255, 0.2);
+  background: rgba(123, 97, 255, 0.08);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.question-alt-toggle:hover,
+.question-alt-toggle:focus-visible {
+  border-color: rgba(123, 97, 255, 0.38);
+  background: rgba(123, 97, 255, 0.14);
+}
+
+.question-alt {
+  margin-bottom: 0;
+  color: var(--text-main);
+  font-size: 0.97rem;
+  line-height: 1.7;
+  font-weight: 600;
 }
 
 .likert-shell {
