@@ -411,15 +411,15 @@ function buildQuestionMarkup(question, index) {
       <div class="likert-shell">
         <div class="likert-row">
           <div class="likert-label">
-            <strong>그렇다</strong>
-            <span class="likert-caption">${escapeHtml(question.leftCaption ?? "그렇다에 가깝다")}</span>
+            <strong>그렇지 않다</strong>
+            <span class="likert-caption">${escapeHtml(question.rightCaption ?? "그렇지 않다에 가깝다")}</span>
           </div>
           <div class="likert-options" role="radiogroup" aria-label="문항 ${index}의 5점 척도 선택">
             ${dots}
           </div>
           <div class="likert-label right">
-            <strong>그렇지 않다</strong>
-            <span class="likert-caption">${escapeHtml(question.rightCaption ?? "그렇지 않다에 가깝다")}</span>
+            <strong>그렇다</strong>
+            <span class="likert-caption">${escapeHtml(question.leftCaption ?? "그렇다에 가깝다")}</span>
           </div>
         </div>
       </div>
