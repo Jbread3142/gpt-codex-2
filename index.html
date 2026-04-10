@@ -68,34 +68,19 @@
         <h2 class="card-title">기본 정보 입력</h2>
         <p class="card-copy">입력해주신 정보는 다음 문항 진행과 결과 정리에 사용됩니다.</p>
 
-        <form id="infoForm" class="info-form">
+        <div id="infoForm" class="info-form" role="form" aria-labelledby="basicInfoTitle">
           <label class="field">
             <span>이름</span>
-            <input type="text" name="name" placeholder="홍길동" value="홍길동" required />
+            <input type="text" id="name" name="name" placeholder="홍길동" value="홍길동" required />
           </label>
-
-          <div class="field-row">
-            <label class="field">
-              <span>나이</span>
-              <input type="number" name="age" placeholder="34" value="34" required />
-            </label>
-            <label class="field">
-              <span>직업</span>
-              <input type="text" name="job" placeholder="기획자" value="기획자" required />
-            </label>
-          </div>
 
           <label class="field">
-            <span>이메일</span>
-            <input type="email" name="email" placeholder="sample@naver.com" value="sample@naver.com" required />
+            <span>나이</span>
+            <input type="number" id="age" name="age" placeholder="34" value="34" required />
           </label>
 
-          <p class="helper-copy">
-            상담 진행 안내 또는 결과 전달이 필요할 경우 이 이메일이 사용될 수 있습니다.
-          </p>
-
-          <button type="submit" class="primary-button primary-button-large">검사 시작하기</button>
-        </form>
+          <button type="button" class="primary-button primary-button-large" id="startBtn">검사 시작하기</button>
+        </div>
 
         <p class="form-footer" id="statusBox">
           기본 정보를 입력한 뒤 다음 단계에서 상태감각능력 문항 5개를 체크하게 됩니다.

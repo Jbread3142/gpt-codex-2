@@ -8,16 +8,22 @@ const surveyData = [
         id: "q1",
         title: "몸 어딘가가 평소보다 약간 불편해도, 바로 조정하기보다 그냥 참고 하던 일을 계속하는 편이다.",
         alt: "대체문항: 몸이 살짝 불편해도, 쉬거나 풀기보다 그냥 버티는 편이다.",
+        leftCaption: "불편해도 그냥 간다",
+        rightCaption: "쉬거나 풀어보는 편",
       },
       {
         id: "q2",
         title: "머리가 약간 무겁거나 지끈거려도, 그 신호를 중요하게 보기보다 대수롭지 않게 넘기는 편이다.",
         alt: "대체문항: 머리가 좀 아프거나 무거워도, 별일 아니라고 넘기는 편이다.",
+        leftCaption: "별일 아니라고 넘긴다",
+        rightCaption: "몸 신호를 살펴본다",
       },
       {
         id: "q3",
         title: "목, 어깨, 턱 같은 곳에 긴장이 느껴져도, 풀어야 할 신호로 보기보다 그냥 익숙한 불편처럼 넘기는 편이다.",
         alt: "대체문항: 목이나 어깨가 뻣뻣해도, 관리해야 한다기보다 원래 그런가 보다 하고 넘기는 편이다.",
+        leftCaption: "긴장을 그냥 넘긴다",
+        rightCaption: "풀어야 할 신호로 본다",
       },
     ],
   },
@@ -30,16 +36,22 @@ const surveyData = [
         id: "q4",
         title: "평소와 달리 말투가 날카로워지거나 예민해져도, 그 변화를 바로 알아차리지 못하는 편이다.",
         alt: "대체문항: 내가 평소보다 예민해져도, 그걸 바로 잘 못 느끼는 편이다.",
+        leftCaption: "변화를 잘 못 느낀다",
+        rightCaption: "바로 알아차리는 편",
       },
       {
         id: "q5",
         title: "집중이 잘 안 되거나 머리가 흐려지는 날에도, 평소와 상태가 다르다는 점을 늦게 알아차리는 편이다.",
         alt: "대체문항: 집중이 안 되는 날에도, 내가 평소와 다르다는 걸 늦게 느끼는 편이다.",
+        leftCaption: "늦게 알아차리는 편",
+        rightCaption: "다름을 빨리 느낀다",
       },
       {
         id: "q6",
         title: "사람을 만났을 때 유난히 빨리 지치거나 닫히는 날에도, 왜 그런지보다 그냥 넘어가는 편이다.",
         alt: "대체문항: 사람 만날 때 평소보다 더 지쳐도, 그 변화를 잘 못 알아차리는 편이다.",
+        leftCaption: "그냥 넘어가는 편",
+        rightCaption: "왜 그런지 살펴본다",
       },
     ],
   },
@@ -52,16 +64,22 @@ const surveyData = [
         id: "q7",
         title: "몸이나 기분이 평소와 다르다는 걸 느껴도, 그것을 상태 변화의 신호로 해석하지 않는 편이다.",
         alt: "대체문항: 내가 평소와 다르다는 걸 느껴도, 그걸 컨디션 문제로는 잘 생각하지 않는 편이다.",
+        leftCaption: "상태 신호로 안 본다",
+        rightCaption: "컨디션 신호로 본다",
       },
       {
         id: "q8",
         title: "예민함이나 짜증이 올라와도, 피로나 긴장 때문일 수 있다는 생각보다 그냥 기분 문제로 넘기는 편이다.",
         alt: "대체문항: 짜증이 나도, 내가 지쳐서 그런 건지 생각하지 않는 편이다.",
+        leftCaption: "그냥 기분 문제로 본다",
+        rightCaption: "피로나 긴장을 본다",
       },
       {
         id: "q9",
         title: "집중력 저하나 멍한 느낌이 와도, 몸과 마음의 상태보다 의지 문제로 보는 편이다.",
         alt: "대체문항: 머리가 잘 안 돌아가면, 컨디션보다 의지 부족이라고 느끼는 편이다.",
+        leftCaption: "의지 문제로 느낀다",
+        rightCaption: "상태 문제로 본다",
       },
     ],
   },
@@ -74,16 +92,22 @@ const surveyData = [
         id: "q10",
         title: "내 상태가 좋지 않다는 걸 알아도, 실제로 쉬거나 속도를 줄이는 행동으로는 잘 이어지지 않는 편이다.",
         alt: "대체문항: 상태가 안 좋은 걸 알아도, 생활을 바로 조정하지는 않는 편이다.",
+        leftCaption: "알아도 안 바꾸는 편",
+        rightCaption: "바로 조정하는 편",
       },
       {
         id: "q11",
         title: "피곤하거나 예민한 날에도, 해야 할 일이나 사람 만나는 방식을 거의 바꾸지 않는 편이다.",
         alt: "대체문항: 피곤해도 원래 하던 계획을 잘 안 바꾸는 편이다.",
+        leftCaption: "계획을 거의 안 바꾼다",
+        rightCaption: "상태에 맞게 바꾼다",
       },
       {
         id: "q12",
         title: "몸이 보내는 신호를 느껴도, 잠깐 멈추고 조절하기보다 그냥 흘려보내는 편이다.",
         alt: "대체문항: 몸이 힘들다고 해도, 잠깐 멈추기보다 그냥 넘어가는 편이다.",
+        leftCaption: "그냥 흘려보낸다",
+        rightCaption: "잠깐 멈춰 조절한다",
       },
     ],
   },
@@ -96,16 +120,22 @@ const surveyData = [
         id: "q13",
         title: "상태가 무너지는 느낌이 들어도, 조정하기보다 마음먹기에 달렸다고 여기며 밀어붙이는 편이다.",
         alt: "대체문항: 힘들어도 쉬기보다 의지로 버텨야 한다고 느끼는 편이다.",
+        leftCaption: "의지로 밀어붙인다",
+        rightCaption: "상태에 맞게 조절한다",
       },
       {
         id: "q14",
         title: "집중이 잘 안 될수록 쉬기보다 더 붙잡고 하려는 편이다.",
         alt: "대체문항: 집중이 안 되면 쉬기보다 더 억지로 하려는 편이다.",
+        leftCaption: "더 억지로 붙든다",
+        rightCaption: "쉬거나 끊어가는 편",
       },
       {
         id: "q15",
         title: "몸이나 마음이 이미 지쳐 있어도, 이 정도는 참아야 한다고 생각하며 넘기는 편이다.",
         alt: "대체문항: 많이 힘들어도, 이 정도는 버텨야 한다고 생각하는 편이다.",
+        leftCaption: "이 정도는 버틴다",
+        rightCaption: "힘들면 조절하는 편",
       },
     ],
   },
@@ -118,16 +148,22 @@ const surveyData = [
         id: "q16",
         title: "늘 피곤하거나 무거운 상태가 반복돼도, 그것을 문제라기보다 원래 내 상태처럼 느끼는 편이다.",
         alt: "대체문항: 자주 피곤해도, 원래 나는 이런 편이라고 느끼는 편이다.",
+        leftCaption: "원래 그렇다고 느낀다",
+        rightCaption: "문제로 인식하는 편",
       },
       {
         id: "q17",
         title: "자고 일어나도 개운하지 않은 날이 많아도, 관리가 필요한 문제로 보기보다 그냥 익숙한 상태로 받아들이는 편이다.",
         alt: "대체문항: 자도 개운하지 않아도, 원래 그런가 보다 하고 넘기는 편이다.",
+        leftCaption: "익숙한 상태로 넘긴다",
+        rightCaption: "관리 필요로 본다",
       },
       {
         id: "q18",
         title: "몸의 긴장이나 불편이 오래 이어져도, 비정상이라고 느끼기보다 평소처럼 받아들이는 편이다.",
         alt: "대체문항: 몸이 계속 긴장돼 있어도, 이상하다고 보기보다 원래 그런 줄 아는 편이다.",
+        leftCaption: "평소처럼 받아들인다",
+        rightCaption: "이상 신호로 본다",
       },
     ],
   },
@@ -140,16 +176,22 @@ const surveyData = [
         id: "q19",
         title: "짜증이나 예민함이 올라올 때, 내 상태보다 상대나 상황의 문제를 먼저 보게 되는 편이다.",
         alt: "대체문항: 짜증이 날 때, 내가 힘든 상태인지보다 상대 탓을 먼저 하게 되는 편이다.",
+        leftCaption: "상대나 상황을 먼저 본다",
+        rightCaption: "내 상태를 먼저 본다",
       },
       {
         id: "q20",
         title: "기분이 가라앉거나 마음이 닫힐 때, 몸의 피로나 긴장과 연결해서 보는 경우는 드문 편이다.",
         alt: "대체문항: 마음이 힘들 때, 몸이 지쳐서 그런 건지 생각하는 경우가 별로 없다.",
+        leftCaption: "몸 상태와 잘 안 잇는다",
+        rightCaption: "몸 피로와 연결해 본다",
       },
       {
         id: "q21",
         title: "감정이 거칠어질 때도, 내가 과각성되었거나 지쳐 있다는 점은 잘 떠올리지 못하는 편이다.",
         alt: "대체문항: 감정이 거칠어져도, 내가 지쳐서 그런 건지 잘 생각하지 않는 편이다.",
+        leftCaption: "지친 상태를 못 떠올린다",
+        rightCaption: "지침과 연결해 본다",
       },
     ],
   },
@@ -162,16 +204,22 @@ const surveyData = [
         id: "q22",
         title: "해야 할 일을 마친 뒤에도 몸과 마음이 바로 풀리지 않고, 긴장된 상태가 오래 가는 편이다.",
         alt: "대체문항: 일이 끝나도 긴장이 바로 안 풀리는 편이다.",
+        leftCaption: "긴장이 오래 남는 편",
+        rightCaption: "비교적 잘 풀리는 편",
       },
       {
         id: "q23",
         title: "쉬어야 할 시간에도 계속 생각하거나 자극을 찾느라, 편하게 내려놓는 모드로 잘 넘어가지 못하는 편이다.",
         alt: "대체문항: 쉬는 시간에도 계속 머리나 몸이 쉬지 못하는 편이다.",
+        leftCaption: "쉬는 모드로 안 넘어간다",
+        rightCaption: "편히 내려놓는 편",
       },
       {
         id: "q24",
         title: "집에 와서도 일할 때의 긴장감이나 책임감이 계속 남아 있는 편이다.",
         alt: "대체문항: 집에 와도 긴장이 계속 남아 있는 편이다.",
+        leftCaption: "집에서도 긴장이 남는다",
+        rightCaption: "집에선 풀리는 편",
       },
     ],
   },
@@ -184,16 +232,22 @@ const surveyData = [
         id: "q25",
         title: "내가 정말 쉬어졌는지, 아니면 그냥 멈춰만 있었는지를 잘 구분하지 못하는 편이다.",
         alt: "대체문항: 내가 진짜 회복됐는지 아닌지 잘 모를 때가 많다.",
+        leftCaption: "회복 여부를 잘 모른다",
+        rightCaption: "회복감을 구분하는 편",
       },
       {
         id: "q26",
         title: "쉬고 나서도 왜 개운하지 않은지, 무엇이 회복을 막는지 잘 감이 안 오는 편이다.",
         alt: "대체문항: 쉬어도 왜 안 풀리는지 잘 모르는 편이다.",
+        leftCaption: "왜 안 풀리는지 모르겠다",
+        rightCaption: "막는 요인을 아는 편",
       },
       {
         id: "q27",
         title: "회복이 필요한 상태일 때도, 어떤 방식으로 쉬어야 나아지는지 잘 모르는 편이다.",
         alt: "대체문항: 힘들 때 어떻게 쉬어야 진짜 나아지는지 잘 모르는 편이다.",
+        leftCaption: "어떻게 쉬어야 할지 모른다",
+        rightCaption: "맞는 회복법을 아는 편",
       },
     ],
   },
@@ -206,22 +260,31 @@ const surveyData = [
         id: "q28",
         title: "처음엔 괜찮다가 어느 순간 급격히 무너지는 일이 반복돼도, 그 전에 있었던 작은 신호들을 잘 못 짚는 편이다.",
         alt: "대체문항: 갑자기 확 무너질 때가 있어도, 그 전조를 잘 못 알아보는 편이다.",
+        leftCaption: "전조를 잘 못 짚는다",
+        rightCaption: "전조를 살피는 편",
       },
       {
         id: "q29",
         title: "말투, 집중력, 감정, 몸 상태가 나빠지기 시작하는 지점을 평소에 세밀하게 보지 않는 편이다.",
         alt: "대체문항: 내가 언제부터 상태가 나빠지는지 평소에 잘 안 보는 편이다.",
+        leftCaption: "나빠지는 지점을 안 본다",
+        rightCaption: "변화 지점을 보는 편",
       },
       {
         id: "q30",
         title: "상태가 악화되기 전 늘 비슷한 흐름이 있어도, 그 반복 패턴을 잘 인식하지 못하는 편이다.",
         alt: "대체문항: 내가 무너지기 전에 늘 비슷한 과정이 있어도 그걸 잘 못 알아차리는 편이다.",
+        leftCaption: "반복 패턴을 잘 모른다",
+        rightCaption: "반복 흐름을 읽는 편",
       },
     ],
   },
 ];
 
 const infoForm = document.getElementById("infoForm");
+const startBtn = document.getElementById("startBtn");
+const nameInput = document.getElementById("name");
+const ageInput = document.getElementById("age");
 const surveySection = document.getElementById("surveySection");
 const surveyRoot = document.getElementById("surveyRoot");
 const surveyForm = document.getElementById("surveyForm");
@@ -242,8 +305,6 @@ const totalQuestions = surveyData.reduce((sum, section) => sum + section.questio
 const defaultInfo = {
   name: "홍길동",
   age: "34",
-  job: "기획자",
-  email: "sample@naver.com",
 };
 let toastTimer;
 
@@ -285,10 +346,8 @@ function getSavedObject(storageKey) {
 
 function saveInfo() {
   const payload = {
-    name: infoForm?.name.value.trim() ?? "",
-    age: infoForm?.age.value.trim() ?? "",
-    job: infoForm?.job.value.trim() ?? "",
-    email: infoForm?.email.value.trim() ?? "",
+    name: nameInput?.value.trim() ?? "",
+    age: ageInput?.value.trim() ?? "",
   };
 
   localStorage.setItem(infoStorageKey, JSON.stringify(payload));
@@ -299,14 +358,12 @@ function restoreInfo() {
     ...defaultInfo,
     ...getSavedObject(infoStorageKey),
   };
-  if (!infoForm) {
+  if (!nameInput || !ageInput) {
     return;
   }
 
-  infoForm.name.value = info.name ?? "";
-  infoForm.age.value = info.age ?? "";
-  infoForm.job.value = info.job ?? "";
-  infoForm.email.value = info.email ?? "";
+  nameInput.value = info.name ?? "";
+  ageInput.value = info.age ?? "";
 }
 
 function getSavedAnswers() {
@@ -355,14 +412,14 @@ function buildQuestionMarkup(question, index) {
         <div class="likert-row">
           <div class="likert-label">
             <strong>그렇다</strong>
-            <span class="likert-caption">참고 계속하는 편</span>
+            <span class="likert-caption">${escapeHtml(question.leftCaption ?? "그렇다에 가깝다")}</span>
           </div>
           <div class="likert-options" role="radiogroup" aria-label="문항 ${index}의 5점 척도 선택">
             ${dots}
           </div>
           <div class="likert-label right">
             <strong>그렇지 않다</strong>
-            <span class="likert-caption">불편 신호를 더 살핀다</span>
+            <span class="likert-caption">${escapeHtml(question.rightCaption ?? "그렇지 않다에 가깝다")}</span>
           </div>
         </div>
       </div>
@@ -483,8 +540,6 @@ function buildSummary() {
     "",
     `이름: ${info.name ?? ""}`,
     `나이: ${info.age ?? ""}`,
-    `직업: ${info.job ?? ""}`,
-    `이메일: ${info.email ?? ""}`,
   ];
 
   surveyData.forEach((section, sectionIndex) => {
@@ -541,9 +596,23 @@ if (Object.values(getSavedObject(infoStorageKey)).some(Boolean)) {
   openSurvey();
 }
 
-infoForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (!infoForm.reportValidity()) {
+function handleStartSurvey() {
+  if (!nameInput || !ageInput) {
+    return;
+  }
+
+  const name = nameInput.value.trim();
+  const age = ageInput.value.trim();
+
+  if (!name) {
+    nameInput.reportValidity();
+    nameInput.focus();
+    return;
+  }
+
+  if (!age) {
+    ageInput.reportValidity();
+    ageInput.focus();
     return;
   }
 
@@ -551,6 +620,11 @@ infoForm?.addEventListener("submit", (event) => {
   openSurvey();
   surveySection?.scrollIntoView({ behavior: "smooth", block: "start" });
   showToast("기본 정보가 저장되었습니다. 아래에서 설문을 진행해주세요.");
+}
+
+startBtn?.addEventListener("click", (event) => {
+  event.preventDefault();
+  handleStartSurvey();
 });
 
 surveyForm?.addEventListener("change", () => {
