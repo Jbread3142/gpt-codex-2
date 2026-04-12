@@ -97,7 +97,7 @@ input {
 }
 
 h1 {
-  margin-bottom: 10px;
+  margin-bottom: 26px;
   font-size: clamp(2rem, 7vw, 3rem);
   line-height: 1.06;
   letter-spacing: -0.05em;
@@ -126,7 +126,9 @@ h1 {
 
 .hero-copy {
   margin-bottom: 10px;
+  color: #5f5872;
   line-height: 1.75;
+  font-weight: 560;
 }
 
 .soft-highlight {
