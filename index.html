@@ -71,12 +71,12 @@
         <div id="infoForm" class="info-form" role="form" aria-labelledby="basicInfoTitle">
           <label class="field">
             <span>이름</span>
-            <input type="text" id="name" name="name" placeholder="홍길동" value="홍길동" required />
+            <input type="text" id="name" name="name" placeholder="이름" required />
           </label>
 
           <label class="field">
             <span>나이</span>
-            <input type="number" id="age" name="age" placeholder="34" value="34" required />
+            <input type="number" id="age" name="age" placeholder="나이" required />
           </label>
 
           <button type="button" class="primary-button primary-button-large" id="startBtn">검사 시작하기</button>
@@ -103,7 +103,10 @@
         <form class="survey-form" id="surveyForm" novalidate>
           <div id="surveyRoot"></div>
           <div class="submit-row">
-            <button type="submit" class="primary-button">응답 저장하기</button>
+            <button type="submit" class="primary-button">클립보드에 저장하기</button>
+          </div>
+          <div class="reset-panel">
+            <button type="button" class="ghost-button reset-button" id="resetButton">선택 초기화하기</button>
           </div>
         </form>
       </section>

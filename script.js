@@ -300,11 +300,11 @@ const decreaseFontButton = document.getElementById("decreaseFontButton");
 const infoStorageKey = "state-sense-basic-info";
 const answersStorageKey = "state-sense-survey-answers";
 const typeScaleStorageKey = "state-sense-survey-scale";
-const typeScaleValues = [0.94, 1, 1.08];
+const typeScaleValues = [0.94, 1, 1.08, 1.16];
 const totalQuestions = surveyData.reduce((sum, section) => sum + section.questions.length, 0);
 const defaultInfo = {
-  name: "홍길동",
-  age: "34",
+  name: "",
+  age: "",
 };
 let toastTimer;
 
@@ -358,10 +358,12 @@ function saveInfo() {
 }
 
 function restoreInfo() {
-  const info = {
-    ...defaultInfo,
-    ...getSavedObject(infoStorageKey),
-  };
+  const savedInfo = getSavedObject(infoStorageKey);
+  const shouldClearOldDefaults = savedInfo.name === "홍길동" && savedInfo.age === "34";
+  if (shouldClearOldDefaults) {
+    localStorage.removeItem(infoStorageKey);
+  }
+  const info = shouldClearOldDefaults ? defaultInfo : { ...defaultInfo, ...savedInfo };
   if (!nameInput || !ageInput) {
     return;
   }
@@ -597,19 +599,30 @@ function showResult() {
 function resetSurvey() {
   localStorage.removeItem(infoStorageKey);
   localStorage.removeItem(answersStorageKey);
-  if (infoForm) {
-    infoForm.reset();
+  if (nameInput) {
+    nameInput.value = "";
+  }
+  if (ageInput) {
+    ageInput.value = "";
   }
   if (surveyForm) {
     surveyForm.reset();
     surveyForm.querySelectorAll(".question-card.is-missing").forEach((card) => {
       card.classList.remove("is-missing");
     });
+    surveyForm.querySelectorAll(".question-alt-toggle").forEach((button) => {
+      button.setAttribute("aria-expanded", "false");
+      button.textContent = "쉬운 문항";
+    });
+    surveyForm.querySelectorAll(".question-alt").forEach((alt) => {
+      alt.hidden = true;
+    });
   }
   surveySection?.classList.add("is-hidden");
   resultCard?.classList.add("is-hidden");
   updateProgress();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  infoForm?.closest(".info-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  nameInput?.focus({ preventScroll: true });
   showToast("기본 정보와 응답을 초기화했습니다.");
 }
 
@@ -696,5 +709,5 @@ copyButton?.addEventListener("click", () => {
 });
 
 resetButton?.addEventListener("click", resetSurvey);
-increaseFontButton?.addEventListener("click", () => updateTypeScale(1));
+increaseFontButton?.addEventListener("click", () => updateTypeScale(2));
 decreaseFontButton?.addEventListener("click", () => updateTypeScale(-1));
