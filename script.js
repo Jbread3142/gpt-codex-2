@@ -300,7 +300,7 @@ const decreaseFontButton = document.getElementById("decreaseFontButton");
 const infoStorageKey = "state-sense-basic-info";
 const answersStorageKey = "state-sense-survey-answers";
 const typeScaleStorageKey = "state-sense-survey-scale";
-const typeScaleValues = [0.94, 1, 1.08, 1.16];
+const typeScaleValues = [0.94, 1, 1.08, 1.22];
 const totalQuestions = surveyData.reduce((sum, section) => sum + section.questions.length, 0);
 const defaultInfo = {
   name: "",
@@ -715,5 +715,5 @@ copyButton?.addEventListener("click", () => {
 });
 
 resetButton?.addEventListener("click", resetSurvey);
-increaseFontButton?.addEventListener("click", () => updateTypeScale(2));
+increaseFontButton?.addEventListener("click", () => updateTypeScale(1));
 decreaseFontButton?.addEventListener("click", () => updateTypeScale(-1));

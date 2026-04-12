@@ -253,7 +253,7 @@ h1 {
 .toolbar-title {
   display: block;
   margin-bottom: 4px;
-  font-size: 1rem;
+  font-size: 1.18rem;
   font-weight: 800;
 }
 
@@ -627,13 +627,15 @@ h1 {
   }
 
   .toolbar-actions > * {
-    flex: 1 1 140px;
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 12px;
   }
 
   .toolbar-actions {
     width: 100%;
     margin-left: 0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   .likert-shell {
