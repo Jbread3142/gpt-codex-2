@@ -692,9 +692,15 @@ surveyForm?.addEventListener("submit", (event) => {
     return;
   }
 
-  showResult();
-  resultCard?.scrollIntoView({ behavior: "smooth", block: "start" });
-  showToast("응답이 저장되었습니다.");
+  navigator.clipboard
+    .writeText(buildSummary())
+    .then(() => {
+      resultCard?.classList.add("is-hidden");
+      showToast("응답이 저장되었습니다.");
+    })
+    .catch(() => {
+      showToast("클립보드 저장에 실패했습니다.");
+    });
 });
 
 copyButton?.addEventListener("click", () => {
