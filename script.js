@@ -579,7 +579,7 @@ function buildSummary() {
     lines.push("", `${sectionIndex + 1}. ${section.title}`);
     section.questions.forEach((question, questionIndex) => {
       const absoluteIndex = sectionIndex * 3 + questionIndex + 1;
-      lines.push(`문항 ${absoluteIndex}: ${answers[question.id] ?? "-"}점`);
+      lines.push(`문항 ${absoluteIndex}: ${answers[question.id] ?? "-"}`);
     });
   });
 
